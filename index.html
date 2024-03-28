@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cricket Game</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <h1>Bat Ball Stump Game</h1>
+    <button
+      id="choiceButton"
+      class="batButton"
+      onclick="generateComputerChoice();
+      let resultMsg = getResults('Bat', computerChoice);
+      showResults('Bat', computerChoice, resultMsg);"
+    >
+      <img src="Assets/cricket-bat.png" alt="" />
+    </button>
+
+    <button
+      id="choiceButton"
+      class="ballButton"
+      onclick="generateComputerChoice();
+      resultMsg = getResults('Ball', computerChoice);
+      showResults('Ball', computerChoice, resultMsg);"
+    >
+      <img src="Assets/ball.png" alt="" />
+    </button>
+
+    <button
+      id="choiceButton"
+      class="stumpButton"
+      onclick="generateComputerChoice();
+      resultMsg = getResults('Stump', computerChoice);
+      showResults('Stump', computerChoice, resultMsg);"
+    >
+      <img src="Assets/cricket-stump.png" alt="" />
+    </button>
+
+    <div class="reset">
+      <button
+        class="resetButton"
+        onclick="localStorage.clear()
+      resetScore();"
+      >
+        Reset
+      </button>
+    </div>
+
+    <h3 id="user-move"></h3>
+    <h3 id="computer-move"></h3>
+    <h3 id="result"></h3>
+    <h3 id="score"></h3>
+
+    <script>
+      let scoreStr = localStorage.getItem("Score");
+      let score;
+      resetScore(scoreStr);
+      function resetScore(scoreStr) {
+        score = scoreStr
+          ? JSON.parse(scoreStr)
+          : {
+              win: 0,
+              lost: 0,
+              tie: 0,
+            };
+        score.displayScore = function () {
+          return `Score: Won:${score.win} Lost:${score.lost}  Tie:${score.tie}`;
+        };
+        showResults();
+      }
+
+      let computerChoice;
+
+      function generateComputerChoice() {
+        let randomNumber = Math.random() * 3;
+        if (randomNumber > 0 && randomNumber <= 1) {
+          computerChoice = "Bat";
+        } else if (randomNumber > 1 && randomNumber <= 2) {
+          computerChoice = "Ball";
+        } else {
+          computerChoice = "Stump";
+        }
+      }
+
+      function getResults(userMove, computerMove) {
+        if (userMove === "Bat") {
+          if (computerMove === "Ball") {
+            score.win++;
+            return `User Won`;
+          } else if (computerMove === "Bat") {
+            score.tie++;
+            return `It's a tie`;
+          } else if (computerMove === "Stump") {
+            score.lost++;
+            return "Computer won";
+          }
+        } else if (userMove === "Ball") {
+          if (computerMove === "Ball") {
+            score.tie++;
+            return `It's a tie`;
+          } else if (computerMove === "Bat") {
+            score.lost++;
+            return `Computer Won`;
+          } else if (computerMove === "Stump") {
+            score.win++;
+            return "User won";
+          }
+        } else {
+          if (computerMove === "Ball") {
+            score.win++;
+            return "User Won";
+          } else if (computerMove === "Bat") {
+            score.lost++;
+            return `Computer won`;
+          } else if (computerMove === "Stump") {
+            score.tie++;
+            return `It's tie`;
+          }
+        }
+      }
+      function showResults(userMove, computerMove, result) {
+        localStorage.setItem("Score", JSON.stringify(score));
+        document.querySelector("#user-move").innerText = userMove
+          ? `You have chosen ${userMove}`
+          : "";
+        document.querySelector("#computer-move").innerText = computerMove
+          ? `Computer choice is ${computerMove}`
+          : "";
+        document.querySelector("#result").innerText = result ? result : "";
+        document.querySelector("#score").innerText = score.displayScore();
+      }
+    </script>
+  </body>
+</html>

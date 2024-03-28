@@ -1,0 +1,122 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  text-align: center;
+  background: #301934;
+}
+
+h1 {
+  color: white;
+  font-family: Candara;
+  padding: 15px;
+  margin-bottom: 40px;
+}
+
+/* .batButton {
+  margin-top: 10px;
+  color: white;
+  background-color: #80669d;
+  border: none;
+  width: 120px;
+  height: 30px;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.ballButton {
+  margin: 6px;
+  margin-top: 10px;
+  color: white;
+  background-color: #dd7973;
+  border: none;
+  width: 120px;
+  height: 30px;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.stumpButton {
+  margin-top: 10px;
+  color: white;
+  background-color: #ebad01;
+  border: none;
+  width: 120px;
+  height: 30px;
+  border-radius: 6px;
+  text-decoration: none;
+} */
+
+/* .batButton:hover {
+  background-image: url(Assets/cricket-bat.png);
+  background-size: cover;
+  background-color: #ca9bfe;
+}
+
+.ballButton:hover {
+  background-image: url(Assets/ball.png);
+  background-size: cover;
+  background-color: #ffa6a1;
+  }
+  
+  .stumpButton:hover {
+  background-image: url(Assets/cricket-stump.png);
+  background-size: cover;
+  background-color: #ffebb6;
+} */
+
+.resetButton {
+  margin-top: 20px;
+  color: white;
+  background-color: #d22b2b;
+  border: none;
+  width: 200px;
+  height: 30px;
+  border-radius: 50px;
+  text-decoration: none;
+}
+
+.resetButton:hover {
+  color: #d22b2b;
+  background-color: white;
+  cursor: pointer;
+}
+
+h3 {
+  margin-top: 40px;
+  color: rgb(255, 185, 56);
+}
+
+h3:hover {
+  cursor: not-allowed;
+}
+
+#choiceButton {
+  border: none;
+  height: 100px;
+  width: 100px;
+  margin: 10px;
+  background-color: #6b244e;
+  border-radius: 60px;
+  cursor: pointer;
+}
+
+#choiceButton:hover {
+  background-color: #8e4a73;
+}
+
+.batButton img {
+  height: 75px;
+  width: 60px;
+}
+
+.ballButton img {
+  height: 75px;
+}
+
+.stumpButton img {
+  height: 75px;
+}
